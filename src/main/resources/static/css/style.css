@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+
+  font-size: 11px;
+}
+
+body {
+  margin: 0;
+  /* background-color: beige; */
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  border: none;
+  background: none;
+
+  cursor: pointer;
+}
+
+.btn {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+input {
+  border: 1px solid black;
+  outline: none;
+  padding: 10px;
+
+  width: 100%;
+}
+
+input:focus {
+  border: 1px solid black;
+}
