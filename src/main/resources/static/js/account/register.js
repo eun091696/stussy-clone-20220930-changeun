@@ -27,6 +27,7 @@ registerButton.onclick = () => {
     },
     error: (error) => {                   //실패시에 실행될 메소드
       alert("회원가입 요청 실패");
+      console.log(error.responseJSON);
     }
   });
 }
