@@ -26,8 +26,24 @@ registerButton.onclick = () => {
       alert("회원가입 요청 성공")
     },
     error: (error) => {                   //실패시에 실행될 메소드
-      alert("회원가입 요청 실패");
-      console.log(error.responseJSON);
+      console.log(error.responseJSON.data);
+      loadErrorMessage(error.responseJSON.data)
     }
   });
+}
+
+function loadErrorMessage(errors) {
+  const errorList = document.querySelector(".errors")
+  const errorMsgs = document.querySelector(".error-msgs")
+  const errorArray = Object.values(errors)
+  
+  errorMsgs.innerHTML = "";
+
+  errorArray.forEach(error => {
+    errorMsgs.innerHTML += `
+      <li>${error}</li>
+    `;
+  });
+
+  errorList.classList.remove("errors-invisible");
 }
