@@ -1,5 +1,6 @@
 package com.stussy.stussyclon20220930changeun.api;
 
+import com.stussy.stussyclon20220930changeun.aop.annotation.LogAspect;
 import com.stussy.stussyclon20220930changeun.dto.CMRespDto;
 import com.stussy.stussyclon20220930changeun.dto.RegisterReqDto;
 import com.stussy.stussyclon20220930changeun.dto.validation.ValidationSequence;
@@ -20,6 +21,7 @@ import java.util.Map;
 @RestController
 public class AccountApi {
 
+    @LogAspect
     @PostMapping("/register")
     public ResponseEntity<?> register(@Validated(ValidationSequence.class) @RequestBody RegisterReqDto registerReqDto, BindingResult bindingResult) {
         return ResponseEntity.created(null).body(new CMRespDto<>("회원가입 성공", registerReqDto));
