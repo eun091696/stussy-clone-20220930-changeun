@@ -22,8 +22,10 @@ registerButton.onclick = () => {
     data: JSON.stringify(user),           //전송할 데이터가 있으면
     // 응답발을 data type (return 타입) json
     dataType: "json",                     //json외 text등을 사용할 수 있지만 js사용함
-    success: (response) => {              //성공시에 실행될 메소드
-      alert("회원가입 요청 성공")
+    success: (response, textStatus, request) => {              //성공시에 실행될 메소드
+      console.log(response);
+      const successURL = request.getResponseHeader("Location");
+      location.replace(successURL + "?email=" + response.data)
     },
     error: (error) => {                   //실패시에 실행될 메소드
       console.log(error.responseJSON.data);

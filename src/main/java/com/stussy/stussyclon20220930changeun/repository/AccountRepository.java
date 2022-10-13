@@ -10,5 +10,6 @@ public interface AccountRepository {
 
     public User findUserByEmail(String email) throws Exception;
     public int saveUser(User user) throws Exception;
+//    리턴타입이 int인 경우는 insert, delete, update의 결과 값은 num으로 나타내기 때문이다.
 
 }

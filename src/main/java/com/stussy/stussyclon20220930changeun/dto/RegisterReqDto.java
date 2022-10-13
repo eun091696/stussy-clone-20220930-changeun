@@ -1,7 +1,9 @@
 package com.stussy.stussyclon20220930changeun.dto;
 
+import com.stussy.stussyclon20220930changeun.domain.User;
 import com.stussy.stussyclon20220930changeun.dto.validation.ValidationGroups;
 import lombok.Data;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -30,4 +32,13 @@ public class RegisterReqDto {
     @Size(min = 8, max = 16, message = "비밀번호는 8자 부터 16자까지 입력하여야 합니다", groups = ValidationGroups.SizeGroup.class)
     @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[~!@#$%^&*_])[a-zA-Z\\d-~!@#$%^&*_]*$", message = "비밀번호는 특수기호, 영문, 숫자를 모두 포함해야합니다.", groups = ValidationGroups.PatternCheckGroup.class)
     private String password;
+
+    public User toEntity() {
+        return User.builder()
+                .email(email)
+                .password(new BCryptPasswordEncoder().encode(password)) //new BCryptPasswordEncoder().encode()는 DB에 암호화로 나타난다.
+                .name(firstName + lastName)
+                .role_id(1)
+                .build();
+    }
 }

@@ -1,5 +1,5 @@
-const registerForwardButton = document.querySelectorAll(".account-button")[0];
+const registerForWardButton = document.querySelectorAll(".account-button")[0];
 
-registerForwardButton.onclick = () => {
+registerForWardButton.onclick = () => {
   location.href = "/account/register"
 }
