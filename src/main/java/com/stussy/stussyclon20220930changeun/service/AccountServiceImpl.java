@@ -1,14 +1,13 @@
 package com.stussy.stussyclon20220930changeun.service;
 
 import com.stussy.stussyclon20220930changeun.domain.User;
-import com.stussy.stussyclon20220930changeun.dto.RegisterReqDto;
+import com.stussy.stussyclon20220930changeun.exception.dto.RegisterReqDto;
 import com.stussy.stussyclon20220930changeun.exception.CustomInternalServerErrorException;
 import com.stussy.stussyclon20220930changeun.exception.CustomValidationException;
 import com.stussy.stussyclon20220930changeun.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.validation.ValidationException;
 import java.util.HashMap;
 import java.util.Map;
 

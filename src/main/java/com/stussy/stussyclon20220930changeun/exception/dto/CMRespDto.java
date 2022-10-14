@@ -1,4 +1,4 @@
-package com.stussy.stussyclon20220930changeun.dto;
+package com.stussy.stussyclon20220930changeun.exception.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

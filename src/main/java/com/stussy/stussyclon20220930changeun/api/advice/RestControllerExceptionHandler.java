@@ -1,6 +1,6 @@
 package com.stussy.stussyclon20220930changeun.api.advice;
 
-import com.stussy.stussyclon20220930changeun.dto.CMRespDto;
+import com.stussy.stussyclon20220930changeun.exception.dto.CMRespDto;
 import com.stussy.stussyclon20220930changeun.exception.CustomInternalServerErrorException;
 import com.stussy.stussyclon20220930changeun.exception.CustomValidationException;
 import org.springframework.http.ResponseEntity;
