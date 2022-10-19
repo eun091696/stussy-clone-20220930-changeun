@@ -18,10 +18,13 @@ import java.util.Map;
 @Component
 public class ValidationAop {
 
-    @Pointcut("execution(* com.stussy.stussyclon20220930changeun..*Api.*(..))")
-    private void executionPointCut() {}
+//    @Pointcut("execution(* com.stussy.stussyclon20220930changeun..*Api.*(..))")
+//    private void executionPointCut() {}
+    @Pointcut("@annotation(com.stussy.stussyclon20220930changeun.aop.annotation.ValidAspect)")
+    private void annotationPointcut() {}
 
-    @Around("executionPointCut()")
+
+    @Around("annotationPointcut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
 
         Object[] args = joinPoint.getArgs();
