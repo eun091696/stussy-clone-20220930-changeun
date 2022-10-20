@@ -21,4 +21,22 @@
         from
             pdt_category_mst
     </select>
+    <insert id="saveProductMst" parameterType="com.stussy.stussyclon20220930changeun.domain.Product">
+        insert into
+            pdt_mst
+        values(
+            0,
+            #{pdt_name},
+            #{category_id},
+            #{pdt_price},
+            #{pdt_simple_info},
+            #{pdt_detail_info},
+            #{pdt_option_info},
+            #{pdt_management_info},
+            #{pdt_shipping_info},
+            now(),
+            now()
+        )
+
+    </insert>
 </mapper>
