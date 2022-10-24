@@ -1,6 +1,5 @@
 package com.stussy.stussyclon20220930changeun.controller;
 
-import com.stussy.stussyclon20220930changeun.exception.dto.RegisterReqDto;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,8 +1,8 @@
 package com.stussy.stussyclon20220930changeun.service.admin;
 
 import com.stussy.stussyclon20220930changeun.exception.CustomInternalServerErrorException;
-import com.stussy.stussyclon20220930changeun.exception.dto.admin.CategoryResponseDto;
-import com.stussy.stussyclon20220930changeun.exception.dto.admin.ProductRegisterReqDto;
+import com.stussy.stussyclon20220930changeun.dto.admin.CategoryResponseDto;
+import com.stussy.stussyclon20220930changeun.dto.admin.ProductRegisterReqDto;
 import com.stussy.stussyclon20220930changeun.repository.admin.ProductManagementRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

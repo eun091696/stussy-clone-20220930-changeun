@@ -1,7 +1,7 @@
-package com.stussy.stussyclon20220930changeun.exception.dto;
+package com.stussy.stussyclon20220930changeun.dto;
 
 import com.stussy.stussyclon20220930changeun.domain.User;
-import com.stussy.stussyclon20220930changeun.exception.dto.validation.ValidationGroups;
+import com.stussy.stussyclon20220930changeun.dto.validation.ValidationGroups;
 import lombok.Data;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

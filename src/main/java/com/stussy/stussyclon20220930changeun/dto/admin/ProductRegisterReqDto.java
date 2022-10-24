@@ -1,11 +1,9 @@
-package com.stussy.stussyclon20220930changeun.exception.dto.admin;
+package com.stussy.stussyclon20220930changeun.dto.admin;
 
 import com.stussy.stussyclon20220930changeun.domain.Product;
 import lombok.Data;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
 @Data
 public class ProductRegisterReqDto {

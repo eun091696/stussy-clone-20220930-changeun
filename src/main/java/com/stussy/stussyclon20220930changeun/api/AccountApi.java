@@ -1,9 +1,9 @@
 package com.stussy.stussyclon20220930changeun.api;
 
 import com.stussy.stussyclon20220930changeun.aop.annotation.LogAspect;
-import com.stussy.stussyclon20220930changeun.exception.dto.CMRespDto;
-import com.stussy.stussyclon20220930changeun.exception.dto.RegisterReqDto;
-import com.stussy.stussyclon20220930changeun.exception.dto.validation.ValidationSequence;
+import com.stussy.stussyclon20220930changeun.dto.CMRespDto;
+import com.stussy.stussyclon20220930changeun.dto.RegisterReqDto;
+import com.stussy.stussyclon20220930changeun.dto.validation.ValidationSequence;
 import com.stussy.stussyclon20220930changeun.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

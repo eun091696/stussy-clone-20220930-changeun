@@ -1,6 +1,6 @@
 package com.stussy.stussyclon20220930changeun.domain;
 
-import com.stussy.stussyclon20220930changeun.exception.dto.admin.CategoryResponseDto;
+import com.stussy.stussyclon20220930changeun.dto.admin.CategoryResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.stussy.stussyclon20220930changeun.exception.dto.validation;
+package com.stussy.stussyclon20220930changeun.dto.validation;
 
 import javax.validation.GroupSequence;
 import javax.validation.groups.Default;

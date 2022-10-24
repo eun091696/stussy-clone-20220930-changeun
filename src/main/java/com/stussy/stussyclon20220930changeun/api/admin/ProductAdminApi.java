@@ -2,8 +2,8 @@ package com.stussy.stussyclon20220930changeun.api.admin;
 
 import com.stussy.stussyclon20220930changeun.aop.annotation.LogAspect;
 import com.stussy.stussyclon20220930changeun.aop.annotation.ValidAspect;
-import com.stussy.stussyclon20220930changeun.exception.dto.CMRespDto;
-import com.stussy.stussyclon20220930changeun.exception.dto.admin.ProductRegisterReqDto;
+import com.stussy.stussyclon20220930changeun.dto.CMRespDto;
+import com.stussy.stussyclon20220930changeun.dto.admin.ProductRegisterReqDto;
 import com.stussy.stussyclon20220930changeun.service.admin.ProductManagementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
