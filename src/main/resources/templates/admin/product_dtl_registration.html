@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account</title>
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <link rel="stylesheet" href="/static/css/style.css">
   <link rel="stylesheet" href="/static/css/header.css">
-  <link rel="stylesheet" href="/static/css/collections_number.css">
-  <title>Account</title>
+  <link rel="stylesheet" href="/static/css/admin.css">
+  <link rel="stylesheet" href="/static/css/aside.css">
 </head>
 <body>
     <div id="container">
@@ -55,33 +56,26 @@
           <script src="/static/js/header/header.js"></script>
         </header>
         <main>
-          <ul class="page-number-list">
-            <!-- <a href="javascript:void(0)"><li>&#60;</li></a>
-            <a href="javascript:void(0)"><li>1</li></a>
-            <a href="javascript:void(0)"><li>2</li></a>
-            <a href="javascript:void(0)"><li>3</li></a>
-            <a href="javascript:void(0)"><li>4</li></a>
-            <a href="javascript:void(0)"><li>5</li></a>
-            <a href="javascript:void(0)"><li>&#62;</li></a> -->
-          </ul>
-          <ul class="collection-products">
-            <!-- <li class="collection-product">
-              <div class="product-img">
-                <img src="/static/images/product/T.png">
-              </div>
-              <div class="product-name">
-                상품명
-              </div>
-              <div class="product-price">
-                10000원
-              </div>
-            </li> -->
-          </ul>
+            <div class="login">
+                <h1 class="admin-tittle">ADMIN PRODUCT REGISTRATION</h1>
+                <div class="admin-container">
+                    <aside class="admin-menus">
+                      <ul>
+                          <li><a href="/admin/products">상품 조회</a></li>
+                          <li><a href="/admin/products/addition">상품 등록</a></li>
+                          <li><a href="/admin/systems">시스템 정보</a></li>
+                          <li><a href="/logout">로그아웃</a></li>
+                      </ul>
+                    </aside>
+                    <section class="admin-main">
+                      <select class="product-select">
+                        <!-- <option value="1">WORLD TOUR TEE</option> -->
+                      </select>
+                    </section>
+                </div>
+           </div>
         </main>
-        <footer>
-
-        </footer>
     </div>
-    <script src="/static/js/product/collections_number.js"></script>
+    <script src="/static/js/admin/product_dtl_registration.js"></script>
 </body>
 </html>

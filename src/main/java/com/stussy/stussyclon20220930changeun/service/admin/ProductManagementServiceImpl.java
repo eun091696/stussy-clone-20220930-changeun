@@ -1,5 +1,6 @@
 package com.stussy.stussyclon20220930changeun.service.admin;
 
+import com.stussy.stussyclon20220930changeun.dto.admin.ProductMstOptionRespDto;
 import com.stussy.stussyclon20220930changeun.exception.CustomInternalServerErrorException;
 import com.stussy.stussyclon20220930changeun.dto.admin.CategoryResponseDto;
 import com.stussy.stussyclon20220930changeun.dto.admin.ProductRegisterReqDto;
@@ -31,6 +32,16 @@ public class ProductManagementServiceImpl implements ProductManagementService {
         if(productManagementRepository.saveProductMst(productRegisterReqDto.toEntity()) == 0) {
             throw new CustomInternalServerErrorException("상품 등록 실패");
         }
-
     }
+
+    @Override
+    public List<ProductMstOptionRespDto> getProductMstList() throws Exception {
+        List<ProductMstOptionRespDto> list = new ArrayList<ProductMstOptionRespDto>();
+        productManagementRepository.getProductMstList().forEach(pdtMst -> {
+            list.add(pdtMst.toDto());
+        });
+        return list;
+    }
+
+
 }
