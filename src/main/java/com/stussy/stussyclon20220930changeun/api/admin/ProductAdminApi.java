@@ -3,6 +3,7 @@ package com.stussy.stussyclon20220930changeun.api.admin;
 import com.stussy.stussyclon20220930changeun.aop.annotation.LogAspect;
 import com.stussy.stussyclon20220930changeun.aop.annotation.ValidAspect;
 import com.stussy.stussyclon20220930changeun.dto.CMRespDto;
+import com.stussy.stussyclon20220930changeun.dto.admin.ProductRegisterDtlReqDto;
 import com.stussy.stussyclon20220930changeun.dto.admin.ProductRegisterReqDto;
 import com.stussy.stussyclon20220930changeun.service.admin.ProductManagementService;
 import lombok.RequiredArgsConstructor;
@@ -50,5 +51,17 @@ public class ProductAdminApi {
     public ResponseEntity<?> getProductMstList() throws Exception{
         return ResponseEntity.ok()
                 .body(new CMRespDto<>("Get Successfully", productManagementService.getProductMstList()));
+    }
+    @GetMapping("/option/products/size/{productId}") //productId의 값에 따라 size페이지 가져온다.
+    public ResponseEntity<?> getSizeList(@PathVariable int productId) throws Exception{
+        return ResponseEntity.ok()
+                .body(new CMRespDto<>("Get Successfully", productManagementService.getSizeList(productId)));
+    }
+    @PostMapping("/product/dtl")
+    public ResponseEntity<?> registerDtl(@RequestBody ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception {
+        productManagementService.checkDuplicatedColor(productRegisterDtlReqDto);
+        productManagementService.registerDtl(productRegisterDtlReqDto);
+        return ResponseEntity.created(null)
+                .body(new CMRespDto<>("Register Successfully", true));
     }
 }

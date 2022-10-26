@@ -158,6 +158,7 @@ getCollections(responseData) {
   });
 }
 
+ 
 }
 
 window.onload = () => {
