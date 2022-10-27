@@ -90,7 +90,7 @@
         insert into
             pdt_image_mst
         values
-        <foreach collection="List" item="img" separator=",">
+        <foreach collection="list" item="img" separator=",">
             (
                 0,
                 #{img.pdt_id},

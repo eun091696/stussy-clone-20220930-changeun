@@ -169,6 +169,7 @@ class ProductImgFile {
   newImgList = new Array();
 
   constructor() {
+    this.addUploadEvent();
     this.addFileInputEvent();
   }
 
