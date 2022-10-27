@@ -95,19 +95,30 @@
                       <br>
                       <br>
                       <br>
-                      <input type="file" class="product-img" name="files" multiple>
+                      <form action="multipart/form-data">
+                      <!-- multiple이란 파일을 동시에 올리기 위해 사용된다. -->
+                        <input type="file" class="files-input" name="files" multiple>
+                      </form>
                       <br>
                       <br>
-                      <button class="btn regist-button">사진등록</button>
+                      <button class="btn regist-button img-add-button">사진등록</button>
                       <ul class="file-list">
-                        <li class="file-info">
+                        <!-- <li class="file-info">
                           <div class="file-img">
                             <img src="/static/images/product/T.png" alt="">
                           </div>
                           <div class="file-name">파일명.png</div>
                           <button type="button" class="btn delete-button">삭제</button>
-                        </li>
+                        </li> -->
                       </ul>
+                      <button class="btn regist-button upload-button">사진저장</button>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <div></div>
                     </section>
                 </div>
            </div>
