@@ -95,7 +95,7 @@
             psm.size_name,
             pd.pdt_color,
             pd.pdt_stock,
-            pim.save_namepdt_image_mst
+            pim.save_name
         FROM
             pdt_mst pm
             LEFT OUTER JOIN pdt_dtl pd ON(pd.pdt_id = pm.id)
