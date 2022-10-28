@@ -100,7 +100,7 @@ getCollections(responseData) {
     collectionProducts.innerHTML += `
     <li class="collection-product">
     <div class="product-img">
-      <img src="/static/images/product/T.png">
+      <img src="/static/upload/product/${product.mainImg}">
     </div>
     <div class="product-name">
       ${product.productName}
