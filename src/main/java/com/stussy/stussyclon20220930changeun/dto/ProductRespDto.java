@@ -16,7 +16,7 @@ public class ProductRespDto {
     private String pdtDetailInfo;
     private String pdtOptionInfo;
     private String pdtManagementInfo;
-    private String padShippingInfo;
+    private String pdtShippingInfo;
     private Map<String, List<Map<String, Object>>> pdtColors;
     private List<String> pdtImgs;
 }

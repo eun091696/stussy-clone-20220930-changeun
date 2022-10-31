@@ -73,7 +73,7 @@ public class ProductServiceImpl implements ProductService{
                 .pdtDetailInfo(product.getPdt_detail_info())
                 .pdtOptionInfo(product.getPdt_option_info())
                 .pdtManagementInfo(product.getPdt_management_info())
-                .pdtSimpleInfo(product.getPdt_shipping_info())
+                .pdtShippingInfo(product.getPdt_shipping_info())
                 .pdtColors(pdtColors)
                 .pdtImgs(pdtImgs)
                 .build();
