@@ -34,9 +34,14 @@ class CollectionsApi {
   }
 }
 
-class pageScroll { //스코롤 만드는 class, 싱글톤 필요 없음.
-  constructor() {
-    this.addScrollPagingEvent();
+class PageScroll { 
+  static #instance = null;
+
+  static getInstance() {
+    if(this.#instance == null) {
+      this.#instance = new PageScroll();
+    }
+    return this.#instance;
   }
 
   addScrollPagingEvent() {
@@ -69,10 +74,16 @@ class CollectionsService {
     return this.#instance;
   }
 
+  pdtIdList = null;
+
   collectionsEntity = {
       page: 1,
       totalCount: 0,
       maxPage: 0
+  }
+
+  constructor() {
+    this.pdtIdList = new Array();
   }
 
   loadCollections() {
@@ -92,30 +103,42 @@ class CollectionsService {
     }
   }
 
-  // 상품 이미지 추가
-getCollections(responseData) {
-  const collectionProducts = document.querySelector(".collection-products")
+    // 상품 이미지 추가
+  getCollections(responseData) {
+    const collectionProducts = document.querySelector(".collection-products")
 
-  responseData.forEach(product => {
-    collectionProducts.innerHTML += `
-    <li class="collection-product">
-    <div class="product-img">
-      <img src="/static/upload/product/${product.mainImg}">
-    </div>
-    <div class="product-name">
-      ${product.productName}
-    </div>
-    <div class="product-price">
-    ${product.productPrice}원
-    </div>
-  </li>
-    `;
-  });
-}
+    responseData.forEach(product => {
+      this.pdtIdList.push(product.productId);
+      collectionProducts.innerHTML += `
+      <li class="collection-product">
+      <div class="product-img">
+        <img src="/static/upload/product/${product.mainImg}">
+      </div>
+      <div class="product-name">
+        ${product.productName}
+      </div>
+      <div class="product-price">
+      ${product.productPrice}원
+      </div>
+    </li>
+      `;
+    });
+    this.addProductListEvent(responseData);
+  }
+
+  addProductListEvent() {
+    const collectionProducts = document.querySelectorAll(".collection-product");
+
+    collectionProducts.forEach((product, index) => {
+      product.onclick = () => {
+        location.href = "/product/" + this.pdtIdList[index];
+      }
+    });
+  }
 
 }
 
 window.onload = () => {
   CollectionsService.getInstance().loadCollections();
-  new pageScroll();
+  PageScroll.getInstance().addScrollPagingEvent();
 }
