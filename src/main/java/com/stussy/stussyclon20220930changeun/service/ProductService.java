@@ -1,5 +1,6 @@
 package com.stussy.stussyclon20220930changeun.service;
 
+import com.stussy.stussyclon20220930changeun.dto.CheckoutRespDto;
 import com.stussy.stussyclon20220930changeun.dto.CollectionListRespDto;
 import com.stussy.stussyclon20220930changeun.dto.ProductRespDto;
 
@@ -10,4 +11,5 @@ public interface ProductService {
 
     public ProductRespDto getProduct(int pdtId) throws Exception;
 
+    public CheckoutRespDto getCheckoutProduct(int pdtDtlId) throws Exception;
 }
