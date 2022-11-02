@@ -45,7 +45,10 @@
             um.email = #{email}
     </select>
 
-    <insert id="saveUser" parameterType="com.stussy.stussyclon20220930changeun.domain.User">
+    <insert id="saveUser"
+            parameterType="com.stussy.stussyclon20220930changeun.domain.User"
+            useGeneratedKeys="true"
+            keyProperty="id">
         insert into
             user_mst
         values(

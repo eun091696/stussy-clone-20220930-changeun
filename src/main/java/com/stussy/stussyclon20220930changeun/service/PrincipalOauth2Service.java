@@ -1,13 +1,19 @@
 package com.stussy.stussyclon20220930changeun.service;
 
+import com.stussy.stussyclon20220930changeun.domain.User;
 import com.stussy.stussyclon20220930changeun.repository.AccountRepository;
+import com.stussy.stussyclon20220930changeun.security.PrincipalDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -22,7 +28,49 @@ public class PrincipalOauth2Service extends DefaultOAuth2UserService {
 
         log.info("oAuth2User: {}", oAuth2User.getAttributes());
         log.info("userRequest: {}", userRequest.getClientRegistration());
+        String provider = userRequest.getClientRegistration().getClientName(); //결과는 Google 또는 Naver 이다.
+        PrincipalDetails principalDetails = null;
 
-        return oAuth2User;
+        try {
+            principalDetails = getPrincipalDetails(provider, oAuth2User.getAttributes());
+        } catch (Exception e) {
+            throw new OAuth2AuthenticationException("login failed");
+        }
+
+        return principalDetails;
+    }
+    
+    private PrincipalDetails getPrincipalDetails(String provider, Map<String, Object> attributes) throws Exception {
+        User user = null;
+        
+        Map<String, Object> oauth2Attributes = null;
+        String email = null;
+        
+        if(provider.equalsIgnoreCase("google")) {
+            oauth2Attributes = attributes;
+        } else if(provider.equalsIgnoreCase("naver")) {
+            oauth2Attributes = (Map<String, Object>) attributes.get("response");
+        }
+        
+        email = (String) oauth2Attributes.get("eamil");
+        
+        user = accountRepository.findUserByEmail(email);
+        
+        if(user == null) {
+            // 회원가입
+            user = User.builder()
+                    .email(email)
+                    .password(new BCryptPasswordEncoder().encode(UUID.randomUUID().toString()))
+                    .name((String) attributes.get("name"))
+                    .provider(provider)
+                    .role_id(1)
+                    .build();
+
+            accountRepository.saveUser(user);
+        } else if (user.getProvider() == null) {
+            // 연동
+        }
+
+        return new PrincipalDetails(user, attributes);
     }
 }
