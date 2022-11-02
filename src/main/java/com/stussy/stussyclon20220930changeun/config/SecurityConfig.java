@@ -1,6 +1,8 @@
 package com.stussy.stussyclon20220930changeun.config;
 
 import com.stussy.stussyclon20220930changeun.security.AuthFailureHandler;
+import com.stussy.stussyclon20220930changeun.service.PrincipalOauth2Service;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,7 +13,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final PrincipalOauth2Service principalOauth2Service;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
@@ -38,6 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/account/login")            // login page Get요청
                 .loginProcessingUrl("/account/login")   // login service Post요청
                 .failureHandler(new AuthFailureHandler())
+                .and()
+                .oauth2Login()
+                .userInfoEndpoint()
+                .userService(principalOauth2Service)
+                .and()
                 .defaultSuccessUrl("/index");
     }
 }
