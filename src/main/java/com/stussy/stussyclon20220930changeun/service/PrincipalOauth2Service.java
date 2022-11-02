@@ -24,11 +24,12 @@ public class PrincipalOauth2Service extends DefaultOAuth2UserService {
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+
         OAuth2User oAuth2User = super.loadUser(userRequest);
 
-        log.info("oAuth2User: {}", oAuth2User.getAttributes());
+        log.info("oAuth2User:{}", oAuth2User.getAttributes());
         log.info("userRequest: {}", userRequest.getClientRegistration());
-        String provider = userRequest.getClientRegistration().getClientName(); //결과는 Google 또는 Naver 이다.
+        String provider = userRequest.getClientRegistration().getClientName();
         PrincipalDetails principalDetails = null;
 
         try {
@@ -39,38 +40,39 @@ public class PrincipalOauth2Service extends DefaultOAuth2UserService {
 
         return principalDetails;
     }
-    
+
+
     private PrincipalDetails getPrincipalDetails(String provider, Map<String, Object> attributes) throws Exception {
         User user = null;
-        
+
         Map<String, Object> oauth2Attributes = null;
         String email = null;
-        
-        if(provider.equalsIgnoreCase("google")) {
+        if(provider.equalsIgnoreCase("google")){
             oauth2Attributes = attributes;
-        } else if(provider.equalsIgnoreCase("naver")) {
-            oauth2Attributes = (Map<String, Object>) attributes.get("response");
+        }else if(provider.equalsIgnoreCase("naver")){
+            oauth2Attributes =(Map<String,Object>) attributes.get("response");
         }
-        
-        email = (String) oauth2Attributes.get("eamil");
-        
+
+        email =(String)oauth2Attributes.get("email");
+
         user = accountRepository.findUserByEmail(email);
-        
-        if(user == null) {
-            // 회원가입
+
+        if(user == null){
+            //회원가입
             user = User.builder()
                     .email(email)
                     .password(new BCryptPasswordEncoder().encode(UUID.randomUUID().toString()))
-                    .name((String) attributes.get("name"))
+                    .name((String)attributes.get("name"))
                     .provider(provider)
                     .role_id(1)
                     .build();
 
             accountRepository.saveUser(user);
-        } else if (user.getProvider() == null) {
-            // 연동
+        }else if (user.getProvider()==null) {
+            //연동
+
         }
 
-        return new PrincipalDetails(user, attributes);
+        return new PrincipalDetails(user,attributes);
     }
 }
