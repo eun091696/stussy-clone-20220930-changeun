@@ -26,7 +26,6 @@ public class ProductServiceImpl implements ProductService{
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("category", category);
         map.put("index", (page - 1) * 16);
-
         productRepository.getProductList(map).forEach(collectionsProduct -> {
             productList.add(collectionsProduct.toDto());
         });
